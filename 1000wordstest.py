@@ -52,7 +52,11 @@ class KnownValues(unittest.TestCase):
         for eng, pl in self.knownValues:
             print(eng, pl)
             result = words.get_def(eng)
-            self.assertIn(pl, result)
+            splitted = []
+            for i in result:
+                for j in i.split():
+                    splitted.append(j)
+            self.assertIn(pl, splitted)
 
 
 if __name__ == "__main__":
