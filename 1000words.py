@@ -1,3 +1,4 @@
+# coding= utf-8
 __author__ = 'kamil'
 
 from bs4 import BeautifulSoup
@@ -41,7 +42,7 @@ def get_def(word):
                     translation = translation.replace(" (strona nie istnieje)", "")
                 elif "Aneks" in translation:
                     translation = ""
-                elif "Wikisłownik" in translation:
+                elif u"Wikisłownik" in translation:
                     translation = ""
                 elif "Kategoria:" in translation:
                     translation = ""
@@ -95,4 +96,6 @@ def main():
         definitions = []
         decision = input("Losować kolejne słowo? t/n: ")
 
-main()
+if __name__ == "__main__":
+    main()
+
