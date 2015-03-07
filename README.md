@@ -3,6 +3,6 @@ parsing wiktionary.org to get 1000 basic words in English, second gets random wo
 
 interface in Polish
 
-fails actual test 
+fails 5 of 40 test cases 
 
 

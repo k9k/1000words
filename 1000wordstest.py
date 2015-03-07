@@ -35,7 +35,7 @@ class KnownValues(unittest.TestCase):
                    ("machine", "maszyna"),
                    ("main", u"główny"),
                    ("young", u"młody"),
-                   ("red", "czerowny"),
+                   ("red", "czerwony"),
                    ("black", "czarny"),
                    ("half", "połowa"),
                    ("island", "wyspa"),
@@ -47,17 +47,39 @@ class KnownValues(unittest.TestCase):
                    ("deal", "umowa"),
                    ("success", "sukces"))
 
-    def testGetDef(self):
-        """testGet should return correct definition (at least one)"""
+    """def testGetDef(self):
+        #testGet should return correct definition (at least one)
         for eng, pl in self.knownValues:
-            print(eng, pl)
+            #print(eng, pl)
             result = words.get_def(eng)
             splitted = []
             for i in result:
                 for j in i.split():
                     splitted.append(j)
-            self.assertIn(pl, splitted)
+            self.assertIn(pl, splitted)"""
+
+
+def testGetDef():
+    for eng, pl in KnownValues.knownValues:
+        test_name = 'test_%s' % (eng)
+        print(test_name)
+        result = words.get_def(eng)
+        splitted = []
+        for i in result:
+            for j in i.split():
+                splitted.append(j)
+        test = generator(pl, splitted)
+        setattr(KnownValues, test_name, test)
+
+
+def generator(correct, ret):
+    def test(self):
+        self.assertIn(correct, ret)
+    return test
+
+
 
 
 if __name__ == "__main__":
-    unittest.main()
+    testGetDef()
+    #unittest.main()
